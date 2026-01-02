@@ -4,6 +4,7 @@ import { CartPage } from '../src/pages/CartPage';
 import { CheckoutInfoPage } from '../src/pages/CheckoutInfoPage';
 import { CheckoutOverviewPage } from '../src/pages/CheckoutOverviewPage';
 import { CheckoutCompletePage } from '../src/pages/CheckoutCompletePage';
+import { checkoutData } from '../src/data/checkout';
 
 const ITEM = 'Sauce Labs Backpack';
 
@@ -25,7 +26,7 @@ test.describe('Checkout', () => {
     const info = new CheckoutInfoPage(loggedPage);
     await info.expectLoaded();
 
-    await info.fillForm({ lastName: 'Marlos', postalCode: '12345' });
+    await info.fillForm(checkoutData.missingFirstName);
     await info.continue();
 
     await info.expectErrorContains('First Name is required');
@@ -37,7 +38,7 @@ test.describe('Checkout', () => {
     const info = new CheckoutInfoPage(loggedPage);
     await info.expectLoaded();
 
-    await info.fillForm({ firstName: 'Bruno', lastName: 'Marlos' });
+    await info.fillForm(checkoutData.missingPostalCode);
     await info.continue();
 
     await info.expectErrorContains('Postal Code is required');
@@ -49,7 +50,7 @@ test.describe('Checkout', () => {
     const info = new CheckoutInfoPage(loggedPage);
     await info.expectLoaded();
 
-    await info.fillForm({ firstName: 'Bruno', lastName: 'Marlos', postalCode: '12345' });
+    await info.fillForm(checkoutData.valid);
     await info.continue();
 
     const overview = new CheckoutOverviewPage(loggedPage);
@@ -61,7 +62,6 @@ test.describe('Checkout', () => {
     const sum = prices.reduce((acc, n) => acc + n, 0);
     const { itemTotal, tax, total } = await overview.getSummaryNumbers();
 
-    // evita flutuação de float
     const round2 = (n: number) => Math.round(n * 100) / 100;
 
     expect(round2(itemTotal)).toBe(round2(sum));
