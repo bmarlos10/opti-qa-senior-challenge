@@ -29,3 +29,18 @@ Manual scenarios mapped to risks are documented in: **scenarios.md**
 ```bash
 npm ci
 npx playwright install --with-deps
+
+## 🏷️ Running tests by tag
+
+Tests are tagged directly in their titles using annotations such as:
+
+- `@smoke` – critical smoke tests
+- `@auth` – authentication
+- `@inventory`
+- `@cart`
+- `@checkout`
+
+### Examples
+Run only smoke tests:
+```bash
+npm run test:smoke
