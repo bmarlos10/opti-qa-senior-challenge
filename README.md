@@ -44,3 +44,39 @@ Tests are tagged directly in their titles using annotations such as:
 Run only smoke tests:
 ```bash
 npm run test:smoke
+
+## Run only checkout tests:
+npx playwright test --grep "@checkout"
+
+## Run auth-related tests:
+npx playwright test --grep "@auth"
+
+## 📦 Test Evidence & Reports
+
+Every CI run uploads the following artifacts:
+
+- **Playwright HTML Report**
+  - Human-readable execution report
+- **Test Results**
+  - Screenshots, videos and traces (on failures)
+- **Allure Report**
+  - Rich test analytics and execution details
+
+### 📥 How to download reports
+1. Open the GitHub Actions run
+2. Scroll down to the **Artifacts** section
+3. Download:
+   - `playwright-report-*`
+   - `test-results-*`
+   - `allure-report-*`
+4. Extract locally and open `index.html`
+
+## 🧠 Automation Strategy
+
+- Not all manual scenarios were automated intentionally
+- Automation focused on:
+  - High-risk flows (login, cart, checkout)
+  - Business-critical validations (totals, required fields)
+  - Regression-prone areas
+- Similar validations were not duplicated to avoid brittle or redundant tests
+
