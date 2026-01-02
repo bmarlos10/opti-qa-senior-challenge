@@ -33,4 +33,41 @@ export class InventoryPage {
     }
     return true;
   }
+
+  private readonly cartLink = this.page.locator('.shopping_cart_link');
+  private readonly cartBadge = this.page.locator('.shopping_cart_badge');
+
+  addToCartButtonFor(itemName: string): Locator {
+    return this.page
+      .locator('.inventory_item')
+      .filter({ has: this.page.getByText(itemName, { exact: true }) })
+      .getByRole('button', { name: /add to cart/i });
+  }
+
+  removeButtonFor(itemName: string): Locator {
+    return this.page
+      .locator('.inventory_item')
+      .filter({ has: this.page.getByText(itemName, { exact: true }) })
+      .getByRole('button', { name: /remove/i });
+  }
+
+  async addItemToCart(itemName: string) {
+    await this.addToCartButtonFor(itemName).click();
+  }
+
+  async removeItemFromCart(itemName: string) {
+    await this.removeButtonFor(itemName).click();
+  }
+
+  async openCart() {
+    await this.cartLink.click();
+  }
+
+  async expectCartBadgeCount(count: number) {
+    if (count === 0) {
+      await expect(this.cartBadge).toHaveCount(0);
+    } else {
+      await expect(this.cartBadge).toHaveText(String(count));
+    }
+  }
 }
