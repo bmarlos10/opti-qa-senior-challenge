@@ -1,4 +1,4 @@
-import { test, expect } from '../src/fixtures/test';
+import { authenticatedTest as test, expect } from '../src/fixtures/authenticatedTest';
 import { InventoryPage } from '../src/pages/InventoryPage';
 
 test.describe('Inventory', () => {

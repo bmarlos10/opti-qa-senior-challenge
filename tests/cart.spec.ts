@@ -1,8 +1,10 @@
-import { test, expect } from '../src/fixtures/test';
+import { authenticatedTest as test} from '../src/fixtures/authenticatedTest';
 import { InventoryPage } from '../src/pages/InventoryPage';
 import { CartPage } from '../src/pages/CartPage';
+import { products } from '../src/data/products';
 
-const ITEM = 'Sauce Labs Backpack';
+
+const ITEM = products.backpack;
 
 test.describe('Cart', () => {
   test('[@smoke][@cart] should add and remove item from cart', async ({ loggedPage }) => {
