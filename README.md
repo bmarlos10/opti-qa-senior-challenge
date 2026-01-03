@@ -158,6 +158,3 @@ How to download:
 - Tests: [tests](tests) (e.g., [tests/auth.login.spec.ts](tests/auth.login.spec.ts), [tests/inventory.spec.ts](tests/inventory.spec.ts), [tests/cart.spec.ts](tests/cart.spec.ts), [tests/checkout.spec.ts](tests/checkout.spec.ts))
 
 ---
-
-## 📜 License
-Educational/demonstration use in the context of the challenge. Adjust as needed for your repository.
