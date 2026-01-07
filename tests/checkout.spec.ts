@@ -1,4 +1,5 @@
 import { authenticatedTest as test, expect } from '../src/fixtures/authenticatedTest';
+import type { Page } from '@playwright/test';
 import { InventoryPage } from '../src/pages/InventoryPage';
 import { CartPage } from '../src/pages/CartPage';
 import { CheckoutInfoPage } from '../src/pages/CheckoutInfoPage';
@@ -8,7 +9,7 @@ import { checkoutData } from '../src/data/checkout';
 
 const ITEM = 'Sauce Labs Backpack';
 
-async function goToCheckout(loggedPage: any) {
+async function goToCheckout(loggedPage: Page) {
   const inventory = new InventoryPage(loggedPage);
   const cart = new CartPage(loggedPage);
 

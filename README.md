@@ -132,6 +132,7 @@ Key steps:
 - Upload artifacts for analysis
 
 Artifacts per run:
+- Artifacts are available under Actions → run → Artifacts
 - Playwright HTML Report (navigable report)
 - Test Results (screenshots, videos, and traces on failures)
 - Allure Report (rich details and analytics)
